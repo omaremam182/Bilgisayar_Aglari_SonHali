@@ -1,0 +1,19 @@
+{% extends "parent.html"%}
+{% block icerik %}
+<div class="main-style">
+    <form action="" method="post" class="form-container">
+        {{ f.hidden_tag() }}
+        <legend class="cap_Login">
+            <h3>Şifre Sıfırlama</h3>
+        </legend>
+        {{ f.eposta.label(class="label-style") }}
+        {{ f.eposta(class="input-style") }}
+        {% if f.eposta.errors %}
+        <ul class="error-list">
+            <li>{{ f.eposta.errors[0] }}</li>
+        </ul>
+        {% endif %}
+        {{ f.buton(class="submit-button") }}
+    </form>
+</div>
+{% endblock %}

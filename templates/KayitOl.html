@@ -1,0 +1,49 @@
+{% extends "parent.html" %}
+{% block icerik %}
+    <div class="main-style">
+        <form action="" method="post" class="form-container">
+            {{f.hidden_tag()}}
+            <legend>
+                <caption> <h3>Kayıt Formu</h3></caption>
+            </legend>
+            {{ f.telefonNo.label(class ="label-style") }}
+            {{ f.telefonNo(class ="input-style",oninput="this.value = this.value.replace(/[^0-9]/g, '')")}}
+            {% if f.telefonNo.errors %}
+            <ul class="error-list">
+                    {{f.telefonNo.errors[0]}}
+            </ul>
+            {% endif %}
+        
+            {{ f.Eposta.label(class ="label-style") }}
+            {{ f.Eposta(class ="input-style")}}
+            {% if f.Eposta.errors %}
+            <ul class="error-list">
+                    {{f.Eposta.errors[0]}}
+            </ul>
+            {% endif %}
+        
+            {{f.kullaniciAdi.label(class ="label-style") }}
+            {{f.kullaniciAdi(class ="input-style")}}
+            {% if f.kullaniciAdi.errors %}
+                {{f.kullaniciAdi.errors[0]}}
+            {%endif%}
+
+            {{ f.sifre.label(class ="label-style") }}
+            {{f.sifre(class ="input-style")}}
+            {% if f.sifre.errors %}
+                {{f.sifre.errors[0]}}
+            {%endif%}
+
+            {{ f.sifreTekrar.label(class ="label-style") }}
+            {{f.sifreTekrar(class ="input-style")}}
+            {%if f.sifreTekrar.errors%}
+                {{f.sifreTekrar.errors[0]}}
+            {%endif%}
+
+            <a href="/Login">Zaten bir hesabım var</a>
+            <br> <br>
+            {{f.buton(class ="submit-button")}}
+        
+        </form>
+    </div>
+{% endblock %}

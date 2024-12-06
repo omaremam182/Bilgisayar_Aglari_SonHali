@@ -1,0 +1,10 @@
+{% extends "parent.html"%}
+{% block icerik%}
+<h1 class="page-title">Ana Sayfa</h1>
+<ul class="user-list">
+    {% for kullanici in users %}
+    <a href=""><li class="user-item">{{ kullanici.ad }} - {{ kullanici.telefonNo }}</li></a>
+    {% endfor %}
+    
+</ul>
+{% endblock %}

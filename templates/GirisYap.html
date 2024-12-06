@@ -1,0 +1,38 @@
+{% extends "parent.html" %}
+{% block icerik %}
+    <div class="main-style">
+        <form method="post" class="form-container">
+            <legend class ="cap_Login">
+                <caption> <h3>Login</h3></caption>
+            </legend>
+            {{f.hidden_tag()}}
+
+            {{ f.Eposta.label(class ="label-style") }}
+            {{ f.Eposta(class ="input-style")}}
+            {% if f.Eposta.errors %}
+            <ul class="error-list">
+                    {{f.Eposta.errors[0]}}
+            </ul>
+            {% endif %}
+        
+        
+            {{ f.sifre.label(class ="label-style") }}
+            {{f.sifre(class ="input-style")}}
+            {% if f.sifre.errors %}
+            <ul class="error-list">
+                    {{f.sifre.errors[0]}}
+            </ul>
+            {% endif %}
+        
+        
+            <!-- {{f.rememberMe}}
+            {{ f.rememberMe.label }} -->
+
+            <br> <br> <a href="KayitOl">Hesabım Yok</a> <br> <br> 
+        
+            {{f.buton(class ="submit-button")}}
+            
+            <a href="sifremiUnuttum">Şifremi Unuttum</a>
+        </form>
+    </div>
+{% endblock %}

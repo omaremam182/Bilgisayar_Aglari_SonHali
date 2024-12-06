@@ -1,0 +1,26 @@
+<!DOCTYPE html> 
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    {% if baslik %}
+        <title>Chat app - {{ baslik }}</title> 
+    {% else %}
+        <title>Chat app</title> 
+    {% endif %}
+    {% block bas %} {% endblock %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='Kayit_Style.css') }}">
+</head>
+<body>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul>                  
+                <li>{{ messages[0] }}</li>
+            </ul>
+        {% endif %}
+    {% endwith %}
+
+    {% block icerik %} {% endblock %}
+</body>
+</html>
