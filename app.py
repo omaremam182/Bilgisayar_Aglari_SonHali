@@ -42,6 +42,10 @@ def kayitOl():
             if telefon == us["telefonNo"] :
                 flash("Bu telefon no zaten kullanımda."," error")
                 return render_template("KayitOl.html", baslik="Kayıt Ol", f=form)
+            if email == us["email"] :
+                flash("Bu e-posta adresi zaten kullanımda. Lütfen başka bir e-posta girin"," error")
+                return render_template("KayitOl.html", baslik="Kayıt Ol", f=form)
+
         try:
             uye = dogrulama.create_user_with_email_and_password(email, sifre)
             # dogrulama.send_email_verification(uye['idToken'])
@@ -59,7 +63,7 @@ def kayitOl():
             return redirect(url_for('home', user_id=uye_id))
         
         except Exception as e:
-            flash("Bu e-posta adresi zaten kullanımda. Lütfen başka bir e-posta girin"," error")
+            flash("Bir hata oluştu. Lütfen daha sonra tekrar deneyin.", "error")
     
     return render_template("KayitOl.html", baslik="Kayıt Ol", f=form)
 
@@ -117,7 +121,7 @@ def home():
             }
             for doc in firebase_config22.tum_kullanicilar
         ]
-        print("kullanici adlari tamam")
+        
         # Oturum kontrolü
         result = check_session_timeout()
         if result:  
